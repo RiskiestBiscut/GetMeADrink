@@ -28,7 +28,6 @@ img{
   flex-wrap: wrap;
 }
 
-
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
@@ -98,20 +97,20 @@ img{
   border-radius: 1rem;
 }
 
-li {
+.list {
   list-style: none;
   width: 20%;
   text-align: center;
 
 }
 
-img {
+.listImg {
   border: 0.8rem solid #FF007F;
   border-radius: 50%;
   transition: all 0.3s linear;
 }
 
-img:hover {
+.listImg:hover {
   border: none;
   transition: all 0.3s linear;
   scale: 1.1;
@@ -120,4 +119,49 @@ img:hover {
 li > p {
   font-size: 4rem;
   color: white;
+}
+
+.detailView {
+  z-index: 2;
+  background: rgba(0,0,0,0.9) ;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  border-radius: 2rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.detailImg {
+  border-radius: 1rem;
+  border: 0.3rem solid white;
+  width: 40%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.detailTitle {
+  color: white;
+  text-align: center;
+  font-size: 3rem;
+}
+
+#detailContainer {
+  margin-left: 4rem;
+  padding: 0;
+}
+.igredientTitle {
+  color: white;
+  font-size: 2.2rem;
+  margin-left: 4rem;
+}
+
+.detailList {
+  color: white;
+  list-style:circle;
+  font-size: 1.6rem;
 }

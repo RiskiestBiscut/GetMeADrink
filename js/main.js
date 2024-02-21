@@ -35,11 +35,13 @@ fetch(url)
             //attach content to DOM elements
             img.src = data.drinks[i].strDrinkThumb
             p.textContent = data.drinks[i].strDrink
+            img.classList.add('listImg')
+            li.classList.add('list')
 
             //append elements in DOM
             li.appendChild(img);
             li.appendChild(p);
-            document.querySelector("ul").appendChild(li);
+            document.querySelector("#container").appendChild(li);
 
             setSelectors()
         }
@@ -53,13 +55,25 @@ fetch(url)
 
 
 function openDrinkItem(e) {
-    let drink = e.target.textContent
+    document.querySelector('.detailView').classList.remove('hidden')
+    let drink = e.target.nextSibling.textContent
+    console.log(drink)
     let url ="https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + drink
-    console.log("clicked")
     fetch(url)
     .then(res => res.json()) // parse response as JSON
     .then(data => {
         console.log(data)
+        document.querySelector('.detailImg').src = data.drinks[0].strDrinkThumb
+        document.querySelector('.detailTitle').textContent = data.drinks[0].strDrink
+        for (let i=0; i<15; i++) {
+            if (data.drinks[0][`strIngredient${i}`] ) {
+                let li = document.createElement("li");
+                li.textContent = data.drinks[0][`strIngredient${i}`]
+                li.classList.add('detailList')
+                console.log(li)
+                document.querySelector('#detailContainer').appendChild(li)
+            }
+        }
     })
     .catch(err => {
         console.log(`error ${err}`)
