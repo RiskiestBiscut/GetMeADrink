@@ -165,3 +165,16 @@ li > p {
   list-style:circle;
   font-size: 1.6rem;
 }
+
+.exitButton {
+  color: white;
+  font-size: 3rem;
+}
+
+.exitButton:hover {
+  scale: 1.4;
+}
+
+.exitButton:active {
+  scale: 1;
+}

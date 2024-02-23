@@ -9,6 +9,10 @@ document.querySelector('.textInput').addEventListener("keypress", function(event
     }
   });
 
+// exit detail view
+
+document.querySelector('.exitButton').addEventListener('click', addHide)
+
  function setSelectors() {
     let drinkItem = document.querySelectorAll('img')
 
@@ -18,8 +22,9 @@ document.querySelector('.textInput').addEventListener("keypress", function(event
  }
 
 function getDrink() {
+    removeMainContent()
     let drink = document.querySelector('input').value
-    let url ="https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + drink
+    let url ="https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + drink
     
 
 fetch(url)
@@ -55,6 +60,7 @@ fetch(url)
 
 
 function openDrinkItem(e) {
+    removeDetailContent()
     document.querySelector('.detailView').classList.remove('hidden')
     let drink = e.target.nextSibling.textContent
     console.log(drink)
@@ -78,4 +84,21 @@ function openDrinkItem(e) {
     .catch(err => {
         console.log(`error ${err}`)
     });
+}
+
+function addHide(){
+    document.querySelector('.detailView').classList.add('hidden')
+
+}
+
+function removeDetailContent() {
+    document.querySelector('.detailImg').src = ''
+    document.querySelector('.detailTitle').textContent = ''
+    let list = document.querySelector('#detailContainer')
+    list.innerHTML = ''
+}
+
+function removeMainContent() {
+    let list = document.querySelector('#container')
+    list.innerHTML = ''
 }
